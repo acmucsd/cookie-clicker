@@ -9,4 +9,16 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
+  rules: {
+   "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        js: "never",
+        jsx: "never",
+        ts: "never",
+        tsx: "never"
+      }
+   ]
+}
 };

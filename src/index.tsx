@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Home from './pages/Home';
 import reportWebVitals from './reportWebVitals';
 
 const App: React.FC = () => {
-  return <></>;
+  return <Home></Home>;
 };
 
 ReactDOM.render(
