@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './style.less';
 import bread from '../../assets/bread.png';
 
 const Stats: React.FC = () => {

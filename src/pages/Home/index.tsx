@@ -1,7 +1,7 @@
 import React from 'react';
 import Store from '../../components/Store';
 import Stats from '../../components/Stats';
-import './style.css';
+import './style.less';
 
 const Home = () => {
   return (

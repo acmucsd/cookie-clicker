@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './style.less';
 
 const Store: React.FC = () => (
   <div className="Store">
