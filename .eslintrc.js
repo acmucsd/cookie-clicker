@@ -9,4 +9,5 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
+  ignorePatterns: ['.eslintrc.js', '.prettierrc.js', 'craco.config.js'],
 };
