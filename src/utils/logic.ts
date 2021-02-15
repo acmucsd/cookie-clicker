@@ -23,8 +23,24 @@ enum CostReference {
   sextillion = 1e21,
 }
 
+enum BaseCpS {
+  CursorUpgrade = 1e-1,
+  DiamondStaff = 1,
+  DiningHalls = 8,
+  SideProjectTeams = 47,
+  ThreeDPrinter = 26e1,
+  ACMEvent = 14e2,
+  ACMAICompetition = 78e2,
+  BreadCon = 44e3,
+  UCCampus = 26e4,
+  Country = 16e5,
+  TypeScriptConsole = 1e7,
+  ACMHackEvent = 65e6,
+  ACMHypercube = 43e7,
+}
+
 const cumulativeBuildingPrice = (baseCost: number, numOwned: number, numWanted: number) => {
   return (baseCost * (1.15 ** numOwned - 1.15 ** (numOwned + numWanted))) / 0.15;
 };
 
-export { BaseCosts, CostReference, cumulativeBuildingPrice };
+export { BaseCosts, CostReference, BaseCpS, cumulativeBuildingPrice };
