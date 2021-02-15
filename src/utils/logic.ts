@@ -10,11 +10,11 @@ enum BaseCosts {
   UCCampus = 51e8,
   Country = 75e9,
   TypeScriptConsole = 1e11,
-  ACMHackEvent = 14e11,
-  ACMHypercube = 17e12,
+  ACMHackEvent = 14e12,
+  ACMHypercube = 17e13,
 }
 
-enum CostReference {
+enum NumReference {
   million = 1e6,
   billion = 1e9,
   trillion = 1e12,
@@ -39,8 +39,36 @@ enum BaseCpS {
   ACMHypercube = 43e7,
 }
 
+interface Counts {
+  CursorUpgrade: number;
+  DiamondStaff: number;
+  DiningHalls: number;
+  SideProjectTeams: number;
+  ThreeDPrinter: number;
+  ACMEvent: number;
+  ACMAICompetition: number;
+  BreadCon: number;
+  UCCampus: number;
+  Country: number;
+  TypeScriptConsole: number;
+  ACMHackEvent: number;
+  ACMHypercube: number;
+  [index: string]: number;
+}
+
+export interface ItemCounts extends Counts {}
+export interface CpSCounts extends Counts {}
+
 const cumulativeBuildingPrice = (baseCost: number, numOwned: number, numWanted: number) => {
-  return (baseCost * (1.15 ** numOwned - 1.15 ** (numOwned + numWanted))) / 0.15;
+  return (baseCost * (1.15 ** (numOwned + numWanted) - 1.15 ** numOwned)) / 0.15;
 };
 
-export { BaseCosts, CostReference, BaseCpS, cumulativeBuildingPrice };
+const getTotalCpS = (itemCounts: ItemCounts, cpsCounts: CpSCounts) => {
+  let totalCpS = 0;
+  Object.keys(itemCounts).forEach((key) => {
+    totalCpS += itemCounts[key] * cpsCounts[key];
+  });
+  return totalCpS;
+};
+
+export { BaseCosts, NumReference, BaseCpS, cumulativeBuildingPrice, getTotalCpS };
