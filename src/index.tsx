@@ -3,8 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.less';
 import reportWebVitals from './reportWebVitals';
 
+const initialState = {
+  userId: -1,
+};
+
+const reducer = (state: any, action: any) => {
+  switch (action.state) {
+    default:
+      return state;
+  }
+};
+
 const App: React.FC = () => {
-  return <></>;
+  const [contextState, updateContext] = React.useReducer(reducer, initialState);
+  const AppContext = React.createContext({ state: initialState, updater: updateContext });
+  return (
+    <AppContext.Provider
+      value={{ state: contextState, updater: updateContext }}
+    ></AppContext.Provider>
+  );
 };
 
 ReactDOM.render(
