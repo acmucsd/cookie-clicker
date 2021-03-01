@@ -14,6 +14,12 @@ const reducer = (state: any, action: any) => {
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const saveState = (state: any) => {
+  const serializedState = JSON.stringify(state);
+  localStorage.setItem('state', serializedState);
+};
+
 const App: React.FC = () => {
   const [contextState, updateContext] = React.useReducer(reducer, initialState);
   const AppContext = React.createContext({ state: initialState, updater: updateContext });
