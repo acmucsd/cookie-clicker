@@ -9,20 +9,34 @@ const initialState = {
 
 const reducer = (state: any, action: any) => {
   switch (action.state) {
+    case 'update-structures':
+      return { numStructures: action.numStructures, ...action.state };
+    case 'update-cps':
+      return { cps: action.cps, ...action.state };
     default:
       return state;
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const saveState = (state: any) => {
   const serializedState = JSON.stringify(state);
   localStorage.setItem('state', serializedState);
 };
 
 const App: React.FC = () => {
+  let i = 0;
   const [contextState, updateContext] = React.useReducer(reducer, initialState);
-  const AppContext = React.createContext({ state: initialState, updater: updateContext });
+  const AppContext = React.createContext({ state: contextState, updater: updateContext });
+  React.useEffect(() => {
+    updateContext(localStorage.getItem('state'));
+  }, []);
+  setInterval(() => {
+    updateContext({ type: 'update-structures', numStructures: contextState.cps * i });
+    i += 0.1;
+  }, 100);
+  setInterval(() => {
+    saveState(contextState);
+  }, 1000);
   return (
     <AppContext.Provider
       value={{ state: contextState, updater: updateContext }}
