@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ProfileCard from './components/ProfileCard';
 import './index.less';
 import reportWebVitals from './reportWebVitals';
 
+/*
 const initialState = {
   userId: -1,
 };
@@ -56,6 +58,10 @@ const App: React.FC = () => {
       </div>
     </AppContext.Provider>
   );
+};
+*/
+const App: React.FC = () => {
+  return <ProfileCard />;
 };
 
 ReactDOM.render(

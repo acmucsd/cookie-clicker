@@ -10,4 +10,11 @@ module.exports = {
     project: './tsconfig.json',
   },
   ignorePatterns: ['.eslintrc.js', '.prettierrc.js', 'craco.config.js'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
+  },
 };
